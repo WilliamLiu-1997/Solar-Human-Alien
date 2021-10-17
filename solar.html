@@ -210,7 +210,6 @@
     import * as THREE from "./three.js/build/three.module.js";
     import { OBJLoader } from "./three.js/examples/jsm/loaders/OBJLoader.js";
     import { MTLLoader } from "./three.js/examples/jsm/loaders/MTLLoader.js";
-    import { GUI } from "./three.js/examples/jsm/libs/dat.gui.module.js";
 
     var follow_frame1 = 0;
     var follow_frame2 = 0;
@@ -267,10 +266,10 @@
     var hit_open = false;
     var scaling = false;
 
-    var SEPARATION = 140,
-      AMOUNTX = 24,
-      AMOUNTY = 8,
-      AMOUNTZ = 24;
+    var SEPARATION = 150,
+      AMOUNTX = 18,
+      AMOUNTY = 6,
+      AMOUNTZ = 18;
     var particles,
       particle,
       star_d,
@@ -668,10 +667,8 @@
       metalness: 1.0,
       color: 0xffffff,
       normalMap: normalMap2,
-      normalScale: new THREE.Vector2(0.05, 0.05),
+      normalScale: new THREE.Vector2(0.1, 0.1),
       clearcoatNormalMap: clearcoatNormaMap,
-
-      // y scale is negated to compensate for normal map handedness.
       clearcoatNormalScale: new THREE.Vector2(1.0, -1.0),
     });
 
@@ -1136,24 +1133,6 @@
       scene.add(all_obj);
     }
     init();
-    // var controls = new (function () {
-    //   this.baseSpeed = 0.025;
-    //   this.noiseRepeat=60;
-    //   this.noiseScale = 0.0025;
-    //   this.bumpSpeed = 0.025;
-    //   this.bumpRepeat=30;
-    //   this.bumpScale = 2.5;
-    // })();
-    // const gui = new GUI();
-    // const sun_shader = gui.addFolder("shader");
-    // sun_shader.add(controls, "baseSpeed", 0.02, 0.2);
-    // sun_shader.add(controls, "noiseRepeat", 1, 100);
-    // sun_shader.add(controls, "noiseScale", 0.002, 0.02);
-    // sun_shader.add(controls, "bumpSpeed", 0.02, 0.5);
-    // sun_shader.add(controls, "bumpRepeat", 1, 100);
-    // sun_shader.add(controls, "bumpScale", 2, 20);
-
-    // sun_shader.open();
 
     function obj_loader(url, url1, scale, double = false) {
       load_items += 2;
@@ -2115,7 +2094,7 @@
       timeStamp += delta;
       if (timeStamp > singleFrameTime) {
         stats.update();
-        if (meteorites.length < 8) {
+        if (meteorites.length < 7) {
           var meteorite1 = generate_meteoriteObject3D(8);
           meteorites.push(meteorite1);
           scene.add(meteorite1[0]);
